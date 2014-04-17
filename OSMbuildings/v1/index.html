@@ -217,10 +217,11 @@
 	  }]
 	};
 
-	var map = new L.Map('map').setView([42.07287028, -4.07575607], 14);
-	var osmb = new OSMBuildings(map).setData(geojson);
+	var map = new L.Map('map').setView([42.07287028, -4.07575607], 16);
+	var osmb = new OSMBuildings(map).setData(geojsonOSM);
+	var mybuildings = new OSMBuildings(map).setData(geojson);
 
-	L.control.layers({}, { Buildings:osmb }).addTo(map);
+	L.control.layers({}, { Buildings:osmb, myBuild:mybuildings }).addTo(map);
 
 
 
