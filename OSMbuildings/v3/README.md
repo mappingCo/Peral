@@ -1,11 +1,14 @@
-### TODO
+personalize OSM buildings 
+=========================
 
-* fix error when load geojson data
+Buildings heigh with vertical exaggeration. The church style its diferent
 
-```
-Uncaught TypeError: Cannot read property 'length' of undefined 
-```
+![3d buildings](http://mappingco.github.io/Peral/terrain_model/terrain.png)
+
+
+
 
 [geojson get using the online converter osm2geojson]
 
-http://aaronlidman.com/osm-and-geojson/
+
+http://tyrasd.github.io/osmtogeojson/
