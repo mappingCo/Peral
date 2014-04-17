@@ -40,15 +40,185 @@
 
 	<div id="map"></div>
 	<script>
-	var geojsonData;
+	var geojsonOSM;
 	$.getJSON( "../map.geojson", function( data ) {
 		osmData = data;
 		console.log('ok')
 	})
+	var geojson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "iglesia",
+        "wallColor": "rgb(255,0,0)",
+	    "roofColor": "rgb(255,12,0)",
+	    "height": 500,
+	    "minHeight": 0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.076230823993683,
+              42.076027909339764
+            ],
+            [
+              -4.076204001903534,
+              42.07587062911311
+            ],
+            [
+              -4.076013565063477,
+              42.075872620004496
+            ],
+            [
+              -4.076005518436432,
+              42.07585271108787
+            ],
+            [
+              -4.075892865657806,
+              42.0758566928717
+            ],
+            [
+              -4.075895547866821,
+              42.075994064260605
+            ],
+            [
+              -4.07592236995697,
+              42.07604980908724
+            ],
+            [
+              -4.076230823993683,
+              42.076027909339764
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ayuntamiento",
+        "wallColor": "rgb(255,0,0)",
+	    "roofColor": "rgb(255,12,0)",
+	    "height": 500,
+	    "minHeight": 0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.077620208263397,
+              42.07604980908724
+            ],
+            [
+              -4.077649712562561,
+              42.076147362415995
+            ],
+            [
+              -4.077754318714142,
+              42.07612148093522
+            ],
+            [
+              -4.077751636505127,
+              42.076063745286234
+            ],
+            [
+              -4.077700674533844,
+              42.076035872885164
+            ],
+            [
+              -4.077620208263397,
+              42.07604980908724
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ed multiusos",
+       	"wallColor": "rgb(255,0,0)",
+	    "roofColor": "rgb(255,128,0)",
+	    "height": 500,
+	    "minHeight": 0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.07904177904129,
+              42.0771089514898
+            ],
+            [
+              -4.078851342201233,
+              42.07712288745623
+            ],
+            [
+              -4.078832566738129,
+              42.076935747080306
+            ],
+            [
+              -4.079023003578186,
+              42.076925792789545
+            ],
+            [
+              -4.079023003578186,
+              42.07699149107977
+            ],
+            [
+              -4.078980088233948,
+              42.07699945450429
+            ],
+            [
+              -4.078988134860992,
+              42.07704325332114
+            ],
+            [
+              -4.079025685787201,
+              42.07703927161179
+            ],
+            [
+              -4.07904177904129,
+              42.0771089514898
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
 
+	var geoJSON = {
+	  "type": "FeatureCollection",
+	  "features": [{
+	    "type": "Feature",
+	    "geometry": {
+	      "type": "Polygon",
+	      "coordinates": [[
+	        [42.07287028, -4.07575607],
+	        [13.37350, 52.51971],
+	        [13.37664, 52.51973],
+	        [13.37594, 52.52062],
+	        [42.07287028, 52.52064]
+	      ]]
+	    },
+	    "properties": {
+	      "wallColor": "rgb(255,0,0)",
+	      "roofColor": "rgb(255,128,0)",
+	      "height": 500,
+	      "minHeight": 0
+	    }
+	  }]
+	};
 
 	var map = new L.Map('map').setView([42.07287028, -4.07575607], 14);
-	var osmb = new OSMBuildings(map).setData(geojsonData);
+	var osmb = new OSMBuildings(map).setData(geojson);
 
 	L.control.layers({}, { Buildings:osmb }).addTo(map);
 
