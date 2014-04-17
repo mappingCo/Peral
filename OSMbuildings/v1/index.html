@@ -31,6 +31,7 @@
       var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 16);
       var osmb = new OSMBuildings(map).loadData()
       osmb.setStyle({ wallColor:'rgb(250, 100, 100)', roofColor:'rgb(200, 150, 100)', shadows:true });
+      //osmb.setDate(new Date(2014, 15, 1, 10, 30)))
 
 
       L.control.layers({}, { Buildings:osmb}).addTo(map);
