@@ -27,6 +27,13 @@ http://mappingco.github.io/Peral/OSMbuildings/v2/
 
 ![osmbuildings2](http://mappingco.github.io/Peral/OSMbuildings/v2/osmbuildings2.png)
 
+* Personalized osmbuildings :
+
+http://mappingco.github.io/Peral/OSMbuildings/v3/
+
+![osmbuildings3](http://mappingco.github.io/Peral/OSMbuildings/v3/osmbuildings3.png)
+
+
 This examples use the OSMBuildings-Leaflet.js lib [http://osmbuildings.org/]
 
 ```javascript
