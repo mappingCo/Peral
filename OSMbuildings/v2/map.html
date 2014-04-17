@@ -44,17 +44,10 @@
 	<div id="map"></div>
 	<script>
 	var osmData;
-		$.ajax({
-            type: "GET",
-            url: "../map.osm",
-            dataType: "xml",
-            success: function(xml) {
-        		osmData= xml
-        		console.log('toy en success')
-
-            }
-        }); //close $.ajax(
-	
+	$.getJSON( "../map.geojson", function( data ) {
+		osmData = data;
+	})
+		
 	var geojsonData = osm_geojson.osm2geojson(osmData)
 
 	//Request data from GeoJson server and add to map

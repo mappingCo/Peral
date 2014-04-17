@@ -9,7 +9,7 @@
 	
 	<!--JQuery library to handle JSON requests-->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="osm_geojson.js"></script>
+	<script type="text/javascript" src="osm2geo.js"></script>
    	<!--JQuery extension to handle JSON requests using AJAX post request-->
 	<!--Credit to: http://forum.jquery.com/topic/getjson-using-post -->
 
@@ -55,7 +55,7 @@
             }
         }); //close $.ajax(
 	
-	var geojsonData = osm_geojson.osm2geojson(osmData)
+	var geojsonData = osm2geo(osmData)
 
 	//Request data from GeoJson server and add to map
 	function getBuildings(data){
