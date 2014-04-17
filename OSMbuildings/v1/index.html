@@ -29,13 +29,19 @@
     <script>
       var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 18);
 
-      new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      /*new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 22}
-      ).addTo(map);
+      ).addTo(map);*/
+
+      new L.tileLayer('http://tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
+        attribution: 'Stamen'
+      }).addTo(map);
 
       var osmb = new OSMBuildings(map).loadData()
-      osmb.setStyle({ wallColor:'rgb(250, 100, 100)', roofColor:'rgb(200, 150, 100)', shadows:true });
+      osmb.setStyle({wallColor:'rgb(250, 100, 100)', roofColor:'rgb(200, 150, 100)', shadows:true });
+      //osmb.each(function(){features[i].properties.height * 20})
+      
       //osmb.setDate(new Date(2014, 15, 1, 10, 30)))
 
 
