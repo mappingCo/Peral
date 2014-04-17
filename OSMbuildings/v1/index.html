@@ -3,7 +3,6 @@
 <head>
 	<title>3DPeral</title>
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css"/>
 	<!--[if lte IE 8]>
@@ -28,19 +27,18 @@
 
 	 <div id="map"></div>
     <script>
-      var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 16);
+      var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 17);
+
+      new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}
+      ).addTo(map);
+
       var osmb = new OSMBuildings(map).loadData()
       osmb.setStyle({ wallColor:'rgb(250, 100, 100)', roofColor:'rgb(200, 150, 100)', shadows:true });
       //osmb.setDate(new Date(2014, 15, 1, 10, 30)))
 
 
       L.control.layers({}, { Buildings:osmb}).addTo(map);
-
-    	var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
-    	
-    	map.addLayer(basemap);
-
 
 
     </script>
