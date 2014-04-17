@@ -50,7 +50,7 @@
 	var map = new L.Map('map').setView([42.07287028, -4.07575607], 14);
 	var osmb = new OSMBuildings(map).setData(geojsonData);
 
-
+	L.control.layers({}, { Buildings:osmb }).addTo(map);
 
 
 
@@ -60,7 +60,7 @@
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
 	
 	map.addLayer(basemap);
-	map.addLayer(osmb)
+
 
 
 </script>
