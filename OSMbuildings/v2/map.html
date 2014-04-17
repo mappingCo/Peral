@@ -46,6 +46,8 @@
 	var osmData;
 	$.getJSON( "../map.geojson", function( data ) {
 		osmData = data;
+		alert(osmData)
+		console.log('ok')
 	})
 		
 	var geojsonData = osm_geojson.osm2geojson(osmData)
