@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>3DPeral</title>
-  <script src="osmperal.js"></script>  
+  <script src="osmperal2.js"></script>  
   <script src="buildings.js"></script>  
 	<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css"/>
@@ -35,25 +35,24 @@
           maxZoom: 22}
       ).addTo(map);
 
-      console.log('before osmperal '+osmperal.features[0].properties.height)
-
-      //var theGrid = osmperal;
-      var theGrid = buildings;
-      console.log('before theGrid '+theGrid.features[0].properties.height)
+      //var theGrid = buildings;
+      var theGrid = osmperal2;
 
       for (i = 0, gridLength = theGrid.features.length; i < gridLength; i++) {
           theGrid.features[i].properties.wallColor = '#0033CC';
           theGrid.features[i].properties.roofColor = 'rgb(150,180,210)';
-          theGrid.features[i].properties.height = theGrid.features[i].properties.height * 20 || 20
+          //theGrid.features[i].properties.height = theGrid.features[i].properties.height * 20 || 200
+          theGrid.features[i].properties.height = theGrid.features[i].properties.height * 20 || 200
           theGrid.features[i].properties.minHeight = 0;
-          //console.log('theGrid color is ' + theGrid.features[i].properties.color);
-     
+          //if (theGrid.features[i].properties.tags.building) = undefined {
+          if(typeof theGrid.features[i].properties.tags.building == "undefined") {
+            theGrid.features[i].geometry = {}
+          }
+          if (theGrid.features[i].properties.tags.building == "church") {
+            theGrid.features[i].properties.height = 300;
+            theGrid.features[i].properties.roofColor = 'rgb(250,0,0)';
+          }
       }
-      var altura = theGrid.features[0].properties.height
-      var altura2 = +theGrid.features[0].properties.height 
-      console.log('altura '+ altura + ' /'+altura2)
-      console.log('after '+theGrid.features[0].properties.height)
-
 
       var osmb= new OSMBuildings(map).setData(theGrid);
       
