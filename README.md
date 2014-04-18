@@ -33,6 +33,12 @@ http://mappingco.github.io/Peral/OSMbuildings/v3/
 
 ![osmbuildings3](http://mappingco.github.io/Peral/OSMbuildings/v3/osmbuildings3.png)
 
+* OSMbuildings with actual date/time for shadow projection:
+
+http://mappingco.github.io/Peral/OSMbuildings/v4/
+
+![osmbuildingsv4](http://mappingco.github.io/Peral/OSMbuildings/v4/osmbuildings4.png)
+
 
 This examples use the OSMBuildings-Leaflet.js lib [http://osmbuildings.org/]
 
