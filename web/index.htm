@@ -1,0 +1,102 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
+
+<head id="www-sitename-com" data-template-set="html5-reset">
+
+	<meta charset="utf-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Peral de Arlanza Map Lab</title>
+	
+	<meta name="title" content="Peral Maps">
+	<meta name="description" content="">	
+	<meta name="google-site-verification" content="">	
+	<meta name="author" content="sigon">
+	<meta name="Copyright" content="SIGON/Mapping&Co 2014. All Rights Reserved.">
+
+	<link rel="shortcut icon" href="http://mappingco.github.io/RepoList/images/logo.png">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/prettyPhoto.css">
+	
+	<!-- javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/jquery.backstretch.min.js"></script>
+	<script src="js/jquery.slabtext.js"></script>
+
+	<script src="js/jquery.masonry.js"></script>
+
+
+	<script type="text/javascript">
+    $(document).ready(function() {
+        $.backstretch("images/page-bg-img.jpg");
+    });
+
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+        });
+    };
+
+     $(window).load(function() {
+        setTimeout(slabTextHeadlines, 0);
+    });
+
+    $(document).ready(function() {
+	    var $container = $('#portfolio');
+		$container.imagesLoaded(function(){
+	  	$container.masonry({
+	    	itemSelector : '.item',
+	    	isFitWidth: true,
+	    	isAnimated: true
+	  		});
+		});
+	});
+
+
+
+	</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<!--The Headline Title -->
+	<header>
+		<h1>
+			<span class="slabtext">PERAL DE ARLANZA MAPS</span>
+		</h1>
+	</header>
+
+	<!-- Contact -->
+	<section id="social">
+		<aside>Copyright &copy; 2014 Mapping&Co Productions.</aside>
+	</section>
+
+	<!-- The Portfolio -->
+	<ul id="portfolio">
+		<li class="item" title="3D Terrain Model"><a href="http://mappingco.github.io/Peral/terrain_model/peral.html" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/cdc6d9fdd71a7ef2945316091294344e1cc36ad1/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f7465727261696e5f6d6f64656c2f7465727261696e2e706e67" alt="Portfolio Image"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-2.jpg" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/7d8cd52885081a77e0832d1f1f1b0934d7e0bd72/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f7465727261696e5f6d6f64656c2f70617263656c61732e706e67" alt="Portfolio Image"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-3.jpg" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/5b04b51860afc56fd1b9ea4e631e55edb859d90d/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f4f534d6275696c64696e67732f76312f6f736d6275696c64696e6773312e706e67" alt="Portfolio Image"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-4.jpg" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/4ecc6a27c2e6f6d6eed0cc6add0f92319944cc03/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f4f534d6275696c64696e67732f76322f6f736d6275696c64696e6773322e706e67" alt="Portfolio Image"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-5.jpg" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/8cab6ea6e970cc8d95cf5389058e845a40a312ac/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f4f534d6275696c64696e67732f76332f6f736d6275696c64696e6773332e706e67" alt="Portfolio Image"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-6.jpg" rel="prettyPhoto"><img src="https://camo.githubusercontent.com/c20599ac1463f4b8b6bd26f8df89908a6f73292a/687474703a2f2f6d617070696e67636f2e6769746875622e696f2f506572616c2f4f534d6275696c64696e67732f76342f6f736d6275696c64696e6773342e706e67"></a></li>
+		<li class="item"><a href="images/portfolio-items/item-7.jpg" rel="prettyPhoto"><img src="images/portfolio-items/item-7.jpg" alt="Portfolio Image"></a></li>
+	
+	</ul>
+
+</div><!--End container-->
+
+</body>
+</html>
