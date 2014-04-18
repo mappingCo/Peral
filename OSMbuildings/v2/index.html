@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>3DPeral</title>
-
+		<meta charset="utf-8">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css"/>
@@ -28,13 +28,22 @@
 
 		<div id="map"></div>
 		<script>
+
+			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 18);
+			var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+			
+			map.addLayer(basemap);
+			
+			// add buldings of interest => 3D OSM buildings
 			var geojson = {
 			  "type": "FeatureCollection",
 			  "features": [
 			    {
 			      "type": "Feature",
 			      "properties": {
-			        "name": "iglesia",
+			        "name": "Iglesia de San Juan Bautista",
+			        "photo": "iglesia.png",
 			        "wallColor": "rgb(255,0,0)",
 				    "roofColor": "rgb(255,128,0)",
 				    "height": 20,
@@ -83,7 +92,8 @@
 			    {
 			      "type": "Feature",
 			      "properties": {
-			        "name": "ayuntamiento",
+			        "name": "Ayuntamiento de Peral de Arlanza",
+			        "photo": "ayto.png",
 			        "wallColor": "rgb(255,0,0)",
 				    "roofColor": "rgb(255,128,0)",
 				    "height": 11,
@@ -124,7 +134,8 @@
 			    {
 			      "type": "Feature",
 			      "properties": {
-			        "name": "ed multiusos",
+			        "name": "Edificio de usos múltiples",
+			        "photo": "usosmult.png",
 			       	"wallColor": "rgb(255,0,0)",
 				    "roofColor": "rgb(255,128,0)",
 				    "height": 20,
@@ -173,20 +184,72 @@
 			          ]
 			        ]
 			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "name": "Ermita de la Veracruz",
+			        "photo": "ermita.png",
+			        "wallColor": "\"rgb(255,0,0)\"",
+			        "roofColor": "\"rgb(255,128,0)\"",
+			        "height": 20,
+			        "minHeight": 0
+			      },
+			      "geometry": {
+			        "type": "Polygon",
+			        "coordinates": [
+			          [
+			            [-4.078945219516754, 42.075249467952844],
+			            [-4.078918397426605, 42.075179786033175],
+			            [-4.078738689422607, 42.07523752248633],
+			            [-4.078776240348816, 42.07529924070577],
+			            [-4.078945219516754, 42.075249467952844]
+			          ]
+			        ]
+			      }
 			    }
 			  ]
 			}
-			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 18);
-			var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
-			
-			map.addLayer(basemap);
-			
 			var osmb = new OSMBuildings(map).setData(geojson);
 
 			L.control.layers({}, { Buildings:osmb}).addTo(map);
 
-			
+			// add poligons with popup
+			var poligons2D;
+			function style(feature) {
+			    return {        
+			    	fillColor: 'red',
+			        weight: 2,
+			        opacity: 0.2,
+			        color: 'white'
+			    };
+			}
+			poligons2D=L.geoJson(geojson,{
+				style: style,
+				onEachFeature:onEachFeature
+			}).addTo(map)
+			function onEachFeature(feature, layer) {
+				var popupContent = "<img src='"+feature.properties.photo+ "'alt='building'></br>"+feature.properties.name;
+				layer.bindPopup(popupContent, {offset: new L.Point(1, -20)});
+				layer.on({
+				        mouseover: highlightFeature,
+				        mouseout: resetHighlight,
+				    });
+
+			}
+			function highlightFeature(e) {
+			    var layer = e.target;
+
+
+			    layer.openPopup();
+
+			    if (!L.Browser.ie && !L.Browser.opera) {
+			        layer.bringToFront();
+			    }
+			};
+			function resetHighlight(e) {
+			    poligons2D.resetStyle(e.target);
+			}
 		</script>
 	</body>
 </html>
