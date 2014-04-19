@@ -141,7 +141,7 @@ var geojson = {
     {
       "type": "Feature",
       "properties": {
-        "name": "Ermita de Cristo de la Vera </br>Cruz, siglo XVIII",
+        "name": "Ermita de Cristo de la Vera &nbsp;&nbsp;&nbsp;</br>Cruz, siglo XVIII",
         "photo": "ermita.png",
         "wallColor": "\"rgb(255,0,0)\"",
         "roofColor": "\"rgb(255,128,0)\"",
@@ -168,7 +168,7 @@ var geojson = {
         "photo": "puente.png",
         "wallColor": "rgb(255,0,0)",
         "roofColor": "rgb(255,128,0)",
-        "height": 10,
+        "height": 5,
         "minHeight": 0
       },
       "geometry": {
