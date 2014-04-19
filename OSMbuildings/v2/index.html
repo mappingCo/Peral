@@ -1,85 +1,87 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<title>3DPeral</title>
-		<meta charset="utf-8">
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
-		<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
-  		<script src="../Google.js"></script>
-  		<script src="geojson.js"></script>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css"/>
-		<!--[if lte IE 8]>
-	    	<	link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" />
-		<![endif]-->
-		<script src="../OSMBuildings-Leaflet.js"></script>
+<head>
+  <title>Layer Control // Leaflet</title>
+  <meta charset="utf-8">
 
-		<style>
-		body {
-			padding: 0;
-			margin: 0;
-		}
-		html, body, #map {
-			height: 100%;
-		}
-		
-	   </style>
-	</head>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 
-	<body>
+  <!-- add necesary scripts for google map layer-->
+  <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+  <script src="../Google.js"></script>
+  <script src="geojson.js"></script>
+  <script src="../OSMBuildings-Leaflet.js"></script>
+  <style>
+    .leaflet-map-pane {
+        z-index: 2 !important;
+    }
 
+    .leaflet-google-layer {
+        z-index: 1 !important;
+    }
+  </style>
 
-		<div id="map"></div>
-		<script>
+</head>
+<body>
+  <!-- define a DIV into which the map will appear. Make it take up the whole window -->
+  <div style="width:100%; height:100%" id="map"></div>
+  <script type='text/javascript'>
+    var map = new L.Map('map', {center: new L.LatLng(42.07633450511675, -4.077880382537842), zoom: 18});
+    
+    var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+    var ggl = new L.Google();
+    var ggl2 = new L.Google('TERRAIN');
 
-			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 18);
-			var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
-			
-			map.addLayer(basemap);
-			
-			// add buldings of interest => 3D OSM buildings
+    map.addLayer(osm);
+    //map.addLayer(ggl,true);
+    
+    var osmb = new OSMBuildings(map).setData(geojson);
+    
+    //map.addControl(new L.Control.Layers( {'OSM':osm, 'Google':ggl, 'Google Terrain':ggl2}, {Buildings:osmb}));
 
-			var osmb = new OSMBuildings(map).setData(geojson);
-
-			L.control.layers({}, { Buildings:osmb}).addTo(map);
-
-			// add poligons with popup
-			var poligons2D;
-			function style(feature) {
-			    return {        
-			    	fillColor: 'red',
-			        weight: 2,
-			        opacity: 0.2,
-			        color: 'white'
-			    };
-			}
-			poligons2D=L.geoJson(geojson,{
-				style: style,
-				onEachFeature:onEachFeature
-			}).addTo(map)
-			function onEachFeature(feature, layer) {
-				var popupContent = "<img src='"+feature.properties.photo+ "'alt='building'></br>"+feature.properties.name;
-				layer.bindPopup(popupContent, {offset: new L.Point(1, -20)});
-				layer.on({
-				        mouseover: highlightFeature,
-				        mouseout: resetHighlight,
-				    });
-
-			}
-			function highlightFeature(e) {
-			    var layer = e.target;
+    L.control.layers({'OSM':osm, 'Google':ggl, 'Google Terrain':ggl2}, { Buildings:osmb}).addTo(map);
 
 
-			    layer.openPopup();
+    // add poligons with popup
+    var poligons2D;
+    function style(feature) {
+      return {        
+        fillColor: 'red',
+          weight: 2,
+          opacity: 0.2,
+          color: 'white'
+      };
+    }
+    poligons2D=L.geoJson(geojson,{
+      style: style,
+      onEachFeature:onEachFeature
+    }).addTo(map)
 
-			    if (!L.Browser.ie && !L.Browser.opera) {
-			        layer.bringToFront();
-			    }
-			};
-			function resetHighlight(e) {
-			    poligons2D.resetStyle(e.target);
-			}
-		</script>
-	</body>
+    function onEachFeature(feature, layer) {
+      var popupContent = "<div><img height='100px' src='"+feature.properties.photo+ "'alt='building'></div></br>"+feature.properties.name;
+      layer.bindPopup(popupContent, {offset: new L.Point(1, -20)});
+
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+      });
+    }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+      layer.openPopup();
+
+      if (!L.Browser.ie && !L.Browser.opera) {
+          layer.bringToFront();
+      }
+    };
+
+    function resetHighlight(e) {
+      poligons2D.resetStyle(e.target);
+    }
+
+ </script>
+</body>
 </html>
+   
