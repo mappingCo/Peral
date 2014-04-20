@@ -148,8 +148,8 @@
 			// method that we will use to update the control based on feature properties passed
 			info.update = function (props) {
 			    this._div.innerHTML = '<h4>PARCELAS SIGPAC</h4>' +  (props ?
-			        '<b>' + props.PROVINCIA +' | '+props.MUNICIPIO +' | '+props.AGREGADO+' | '+ props.ZONA +' | '+ props.POLIGONO +' | '+ props.PARCELA +' | '+props.RECINTO+'</b><br />Pendiente: ' +' | '+(props.PENDIENTE_ /10) + '%<br />Superficie: ' +' | '+(props.SUPERFICIE / 10000)+ 'ha'
-			        : 'Hover over a parcela');
+			        '<b>' + props.PROVINCIA +' | '+props.MUNICIPIO +' | '+props.AGREGADO+' | '+ props.ZONA +' | '+ props.POLIGONO +' | '+ props.PARCELA +' | '+props.RECINTO+'</b><br />Uso: ' +(props.USO_SIGPAC) + '<br />Pendiente: ' +(props.PENDIENTE_ /10) + '%<br />Superficie: ' +(props.SUPERFICIE / 10000)+ 'ha'
+			        : 'Desplazate sobre una parcela');
 			};
 
 			info.addTo(map);
