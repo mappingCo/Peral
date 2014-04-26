@@ -46,6 +46,7 @@ http://mappingco.github.io/Peral/OSMbuildings/v4/
 ![osmbuildingsv4](http://mappingco.github.io/Peral/OSMbuildings/v4/osmbuildings4.png)
 
 
+
 This examples use the OSMBuildings-Leaflet.js lib [http://osmbuildings.org/]
 
 ```javascript
@@ -54,3 +55,10 @@ var osmb = new OSMBuildings(map).loadData();
 L.control.layers({}, { Buildings:osmb }).addTo(map); // add to layer switcher (optional)
 ```
 this library uses 3D osm tags: http://wiki.openstreetmap.org/wiki/Simple_3D_Buildings
+
+
+* Swiping between two layers to compare 1956/now orthophotos
+
+http://mappingco.github.io/Peral/historico/swipelayers.html
+
+![swipe](http://mappingco.github.io/Peral/historico/swipe.png)
