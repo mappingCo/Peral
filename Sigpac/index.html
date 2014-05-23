@@ -79,10 +79,18 @@
 		      transparent: false,
 		      version: '1.3.0',
 		      attribution: "PNOA WMS. Cedido por © Instituto Geográfico Nacional de España"
-		    })
+		    });
+/*
+		    var geologico = L.tileLayer.wms("http://www.idecyl.jcyl.es/IGCyL/services/MedioFisico/Geologia/MapServer/WMSServer? ", {
+		      layers: "1",//layer name (see get capabilities)
+		      format: 'image/jpeg',
+		      transparent: false,
+		      version: '1.3.0',//wms version (see get capabilities)
+		      attribution: "WMS © Junta de Castilla y León"
+		    });
     		//wms cyl not support epgs3857 
     		//todo: change map src from 3857 to 4326
-    		/*
+    		
 		    var pnoaCyL = L.tileLayer.wms("http://orto.wms.itacyl.es/WMS? ", {
 		      layers: "Ortofoto_CyL",//layer name (see get capabilities)
 		      format: 'image/jpeg',
