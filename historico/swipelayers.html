@@ -90,7 +90,7 @@
           handle = document.getElementById('range'),
           dragging = false;
 
-      handle.setAttribute('max', mapSize);middle
+      handle.setAttribute('max', mapSize);
       //handle.setAttribute('style', 'left: '+middle+'px');
       
       handle.onmousedown = function() { dragging = true; return false;}
@@ -100,22 +100,11 @@
           setDivide(e.x);
           handle.value=parseInt(handle.style.left)
       }
-      /*map.on( "zoomend", function( e ) {
-        l_parent = getLayer(map._layers)._container;
-        setDivide(parseInt(handle.style.left));
-      });
-      map.on( "moveend", function( e ) {
-        l_parent = getLayer(map._layers)._container;
-        setDivide(parseInt(handle.style.left));
-      });*/
+
       map.on( "drag", function( e ) {
         l_parent = getLayer(map._layers)._container;
         setDivide(parseInt(handle.style.left));
       });
-      /*map.on( "mousemove", function( e ) {
-        l_parent = getLayer(map._layers)._container;
-        setDivide(e.containerPoint.x);
-      });*/
       
       function setDivide(x) {
         x = Math.max(0, Math.min(x, map.getSize()['x']));
