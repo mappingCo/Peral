@@ -83,7 +83,9 @@
 
 			map.addLayer(pnoaCyL);
 
-
+			function roundToTwo(num) {    
+			    return +(Math.round(num + "e+2")  + "e-2");
+			}
 			
 			function getColor(d) {
 			    return d > 13 ? '#00541b' :
@@ -156,7 +158,7 @@
 			}
 			function onEachFeatureNDVI(feature, layer) {
 				//sigpac code: Provincia | Municipio | Agregado | Zona | Polígono | Parcela | Recinto
-				var popupContent = "Parcela SIGPAC: </br>"+feature.properties.PROVINCIA +' | '+feature.properties.MUNICIPIO +' | '+ feature.properties.AGREGADO +' | '+feature.properties.ZONA +' | '+feature.properties.POLIGONO +' | '+feature.properties.PARCELA +' | '+feature.properties.RECINTO +' </br> Vigor Class: '+feature.properties.Class_Id+' </br> Vigor Parcela: '+feature.properties.NDVImean;
+				var popupContent = "Parcela SIGPAC: </br>"+feature.properties.PROVINCIA +' | '+feature.properties.MUNICIPIO +' | '+ feature.properties.AGREGADO +' | '+feature.properties.ZONA +' | '+feature.properties.POLIGONO +' | '+feature.properties.PARCELA +' | '+feature.properties.RECINTO +' </br> Vigor Class: '+feature.properties.Class_Id+' </br> Vigor Parcela: '+roundToTwo(feature.properties.NDVImean);
 				layer.bindPopup(popupContent);
 				layer.on({
 				        mouseover: highlightFeature,
@@ -198,7 +200,7 @@
 			// method that we will use to update the control based on feature properties passed
 			info.update = function (props) {
 			    this._div.innerHTML = '<h4>PARCELAS SIGPAC</h4>' +  (props ?
-			        '<b>' + props.PROVINCIA +' | '+props.MUNICIPIO +' | '+props.AGREGADO+' | '+ props.ZONA +' | '+ props.POLIGONO +' | '+ props.PARCELA +' | '+props.RECINTO+'</b><br />Pendiente: ' +(props.PENDIENTE_ /10) + '%<br />Superficie: ' +(props.SUPERFICIE / 10000)+ 'ha'+'<br />Indice Vigor parcela:'+props.NDVImean
+			        '<b>' + props.PROVINCIA +' | '+props.MUNICIPIO +' | '+props.AGREGADO+' | '+ props.ZONA +' | '+ props.POLIGONO +' | '+ props.PARCELA +' | '+props.RECINTO+'</b><br />Pendiente: ' +(props.PENDIENTE_ /10) + '%<br />Superficie: ' +roundToTwo(props.SUPERFICIE / 10000)+ 'ha'+'<br />Indice Vigor parcela:'+roundToTwo(props.NDVImean)
 			        : 'Hover over a parcela');
 			};
 
