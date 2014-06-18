@@ -71,8 +71,12 @@
 			</select>
 			<br><br>
 			<input type="button" onclick="selectNDVI()" value="Select date">
+			<input type="button" onclick="deleteLayer()" value="DeleteNDVI">
 		</form>
 		<script>
+			function deleteLayer(){
+				map.removeLayer(NDVI);
+			}
 			function selectNDVI(ndvi_date){
 				var ndvi_date = ndvi_date || $( "#myNDVI option:selected" ).val();
 				console.log(ndvi_date)
@@ -175,8 +179,8 @@
 
 			
 			map.addControl(new L.Control.Layers( 
-				{/*'OSM':basemap, 'Google':ggl, 'Google Terrain':ggl2, */'PNOA': pnoaCyL}, 
-				{'Parcelas':parcelas_4326,'NDVI':NDVI}
+				{'PNOA': pnoaCyL}, 
+				{'Parcelas':parcelas_4326}
 			));
 
 			function zoomToFeature(e) {
