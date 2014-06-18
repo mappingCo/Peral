@@ -70,7 +70,7 @@
 				<option value="NDVI_20140616">16 junio 2014</option>
 			</select>
 			<br><br>
-			<input type="button" onclick="selectNDVI()"value="Select date">
+			<input type="button" onclick="selectNDVI()" value="Select date">
 		</form>
 		<script>
 			function selectNDVI(){
@@ -158,7 +158,7 @@
 			
 			map.addControl(new L.Control.Layers( 
 				{/*'OSM':basemap, 'Google':ggl, 'Google Terrain':ggl2, */'PNOA': pnoaCyL}, 
-				{/*'Parcelas':parcelas_4326,*/'20140609':NDVI_20140609}
+				{'Parcelas':parcelas_4326,'20140609':NDVI_20140609}
 			));
 
 			function zoomToFeature(e) {
