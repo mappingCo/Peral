@@ -56,7 +56,15 @@
 			    margin: 0 0 5px;
 			    color: #777;
 			}
-		
+			.parcelaSelector {
+				position: absolute;
+				top: 170px;
+				right: 9px;
+				z-index: 9;
+				background: rgba(255, 255, 255, 0.8);
+				border-radius: 5px;
+				padding: 6px 8px;
+			}
 	   </style>
 	</head>
 
@@ -64,8 +72,19 @@
 
 
 		<div id="map"></div>
+		<form class="parcelaSelector">
+			Parcela: <input type="text" id="parcela" placeholder="3219" size="4"/>
+			<br>
+			Recinto: <input type="text" id="recinto" placeholder="1" size="4"/>
+			<br><br>
+			<input type="button" onclick="selectParcel()" value="Select parcel">
+		</form>
 		<script>
-
+			function selectParcel(){
+				var parcela = $('#parcela').val();
+				var recinto = $('#recinto').val();
+				console.log(parcela, recinto)
+			};
 			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 13);
 			var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
