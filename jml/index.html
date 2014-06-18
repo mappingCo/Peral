@@ -50,6 +50,12 @@
 			    margin: 0 0 5px;
 			    color: #777;
 			}
+			.ndviSelector {
+				position: absolute;
+				top: 77px;
+				left: 20px;
+				z-index: 9;
+			}
 		
 	   </style>
 	</head>
@@ -58,9 +64,21 @@
 
 
 		<div id="map"></div>
+		<form class="ndviSelector">
+			<select id="myNDVI">
+				<option value="NDVI_20140609">09 junio 2014</option>
+				<option value="NDVI_20140616">16 junio 2014</option>
+			</select>
+			<br><br>
+			<input type="button" onclick="selectNDVI()"value="Select date">
+		</form>
 		<script>
+			function selectNDVI(){
+				var la= $( "#myNDVI option:selected" ).text();
+				var lo= $( "#myNDVI option:selected" ).val();
 
-
+				console.log(la, lo)
+			}
 			var map = new L.Map('map',{crs: L.CRS.EPSG4326}).setView([42.07633450511675, -4.077880382537842], 13);
 			/*var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
@@ -122,7 +140,9 @@
 			        dashArray: '3',
 			        //fillOpacity: 0.7
 			    };
-			}
+			};
+			
+			// parcelas base
 			parcelas_4326=L.geoJson(parcelas_4326,{
 				style: styleParcelas
 				//onEachFeature:onEachFeature
@@ -184,6 +204,7 @@
 			    }
 			    info.update(layer.feature.properties);
 			};
+
 			function resetHighlight(e) {
 			    NDVI_20140609.resetStyle(e.target);
 			    info.update();
