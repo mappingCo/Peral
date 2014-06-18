@@ -67,7 +67,7 @@
 		<form class="ndviSelector">
 			<select id="myNDVI">
 				<option value="NDVI_20140609">09 junio 2014</option>
-				<option value="NDVI_20140616">16 junio 2014</option>
+				<option value="NDVI_20140609">09 junio 2014</option>
 			</select>
 			<br><br>
 			<input type="button" onclick="selectNDVI()" value="Select date">
@@ -76,9 +76,9 @@
 			function selectNDVI(){
 				var ndvi_date= $( "#myNDVI option:selected" ).val();
 				ndvi_date= ndvi_date+'_4326'
+
 				console.log(ndvi_date)
 				map.removeLayer(NDVI);
-
 				NDVI=L.geoJson(ndvi_date,{
 					style: styleNDVI,
 					onEachFeature:onEachFeatureNDVI
