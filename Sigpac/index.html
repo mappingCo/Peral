@@ -65,6 +65,9 @@
 				border-radius: 5px;
 				padding: 6px 8px;
 			}
+			input[type="number"] {
+			   width:70px;
+			}
 	   </style>
 	</head>
 
@@ -73,9 +76,9 @@
 
 		<div id="map"></div>
 		<form class="parcelaSelector">
-			Parcela: <input type="number" id="parcela" placeholder="3219" size="4"/>
+			Parcela: <input type="number" id="parcela" placeholder="3219"/>
 			<br>
-			Recinto: <input type="number" id="recinto" placeholder="1" size="4"/>
+			Recinto: <input type="number" id="recinto" placeholder="1"/>
 			<br><br>
 			<input type="button" onclick="selectParcel()" value="Select parcel">
 		</form>
