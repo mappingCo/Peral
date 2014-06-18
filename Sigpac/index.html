@@ -73,18 +73,16 @@
 
 		<div id="map"></div>
 		<form class="parcelaSelector">
-			Parcela: <input type="text" id="parcela" placeholder="3219" size="4"/>
+			Parcela: <input type="number" id="parcela" placeholder="3219" size="4"/>
 			<br>
-			Recinto: <input type="text" id="recinto" placeholder="1" size="4"/>
+			Recinto: <input type="number" id="recinto" placeholder="1" size="4"/>
 			<br><br>
 			<input type="button" onclick="selectParcel()" value="Select parcel">
 		</form>
 		<script>
 			function selectParcel(){
 				var parcela = $('#parcela').val();
-				parcela= +parcela;
 				var recinto = $('#recinto').val() || 1;
-				recinto = +recinto;
 				console.log('searching parcela: '+parcela+', recinto: '+ recinto)
 				
 
@@ -106,8 +104,6 @@
 
 				});
 				if (misbounds.length==0){
-					console.log(misbounds)
-
 					alert('Sorry, this parcel does not exist')
 				}
 				else {
