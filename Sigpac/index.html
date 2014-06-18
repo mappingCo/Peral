@@ -82,8 +82,21 @@
 		<script>
 			function selectParcel(){
 				var parcela = $('#parcela').val();
+				parcela= +parcela
 				var recinto = $('#recinto').val();
-				console.log(parcela, recinto)
+				console.log(parcela)
+				console.log(sigpac_peral_4326.features.length)
+				for(i=0; i<sigpac_peral_4326.features.length; i++) {
+
+					var miParcela =sigpac_peral_4326.features[i].properties.PARCELA
+					if (miParcela == parcela) {
+						var coord= sigpac_peral_4326.features[i].geometry.coordinates[0][0]
+						break
+					}
+				}
+				console.log(coord[0],coord[1]);
+				map.setView(new L.LatLng(coord[1], coord[0]), 15);
+
 			};
 			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 13);
 			var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
