@@ -85,13 +85,12 @@
 				parcela= +parcela;
 				var recinto = $('#recinto').val() || 1;
 				recinto = +recinto;
-				console.log(parcela, recinto)
-				console.log(sigpac_peral_4326.features.length)
+				console.log('searching: '+parcela, recinto)
 				
 
 				var misbounds=[];
 		
-				//iterate though features
+				//iterate though layer features
 				poligons2D.eachLayer(function(layer){
 					var miParcela =layer.feature.properties.PARCELA
 					var miRecinto =layer.feature.properties.RECINTO
@@ -110,21 +109,7 @@
 				});
 				var bounds =L.polygon(misbounds).getBounds()
 				map.fitBounds(misbounds)
-				//console.log(misCoord);
-				//var bounds = misCoord.getBounds()
-				//console.log(bounds);
 
-				/*for(i=0; i<sigpac_peral_4326.features.length; i++) {
-
-					var miParcela =sigpac_peral_4326.features[i].properties.PARCELA
-					var miRecinto =sigpac_peral_4326.features[i].properties.RECINTO
-					if (miParcela == parcela && miRecinto ==recinto) {
-						var coord= sigpac_peral_4326.features[i].geometry.coordinates[0][0]
-						break
-					}
-				}
-				console.log(coord[0],coord[1]);
-				map.setView(new L.LatLng(coord[1], coord[0]), 16);*/
 
 			};
 			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 13);
