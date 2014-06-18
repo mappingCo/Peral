@@ -4,8 +4,8 @@
   		<meta charset="utf-8"> 
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css"/>
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
 		<!--[if lte IE 8]>
 	    	<	link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" />
 		<![endif]-->
@@ -66,15 +66,15 @@
 		<div id="map"></div>
 		<form class="ndviSelector">
 			<select id="myNDVI">
-				<option value="NDVI_20140609">09 junio 2014</option>
+				<option value="NDVI_20140609" selected>09 junio 2014</option>
 				<option value="NDVI_20140616">09 junio 2014</option>
 			</select>
 			<br><br>
 			<input type="button" onclick="selectNDVI()" value="Select date">
 		</form>
 		<script>
-			function selectNDVI(){
-				var ndvi_date= $( "#myNDVI option:selected" ).val();
+			function selectNDVI(ndvi_date){
+				var ndvi_date = ndvi_date || $( "#myNDVI option:selected" ).val();
 				console.log(ndvi_date)
 			
 				switch (ndvi_date) {
@@ -84,7 +84,11 @@
 		
 					default: NDVI_file = 'NDVI_20140609_4326';
 				}
-				map.removeLayer(NDVI);
+				console.log(NDVI_file);
+				console.log(map.hasLayer(NDVI));
+				//if (map.hasLayer(NDVI)) {
+				//	map.removeLayer(NDVI);
+				//}
 				console.log('deleted')
 				
 				NDVI=L.geoJson(NDVI_file,{
@@ -161,11 +165,12 @@
 				style: styleParcelas
 				//onEachFeature:onEachFeature
 			}).addTo(map)
-
-			NDVI=L.geoJson(NDVI_20140609_4326,{
+ 			
+ 			selectNDVI()
+/*			NDVI=L.geoJson(NDVI_20140609_4326,{
 				style: styleNDVI,
 				onEachFeature:onEachFeatureNDVI
-			}).addTo(map)
+			}).addTo(map)*/
 
 
 			
