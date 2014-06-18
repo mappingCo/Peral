@@ -74,10 +74,11 @@
 		</form>
 		<script>
 			function selectNDVI(){
-				var la= $( "#myNDVI option:selected" ).text();
-				var lo= $( "#myNDVI option:selected" ).val();
+				var ndvi_date= $( "#myNDVI option:selected" ).val();
+				console.log(ndvi_date)
+				map.removeLayer(NDVI_20140609);
+				console.log('borrar')
 
-				console.log(la, lo)
 			}
 			var map = new L.Map('map',{crs: L.CRS.EPSG4326}).setView([42.07633450511675, -4.077880382537842], 13);
 			/*var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
