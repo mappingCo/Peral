@@ -87,7 +87,34 @@
 				recinto = +recinto;
 				console.log(parcela, recinto)
 				console.log(sigpac_peral_4326.features.length)
-				for(i=0; i<sigpac_peral_4326.features.length; i++) {
+				
+
+				var misbounds=[];
+		
+				//iterate though features
+				poligons2D.eachLayer(function(layer){
+					var miParcela =layer.feature.properties.PARCELA
+					var miRecinto =layer.feature.properties.RECINTO
+					if (miParcela == parcela && miRecinto ==recinto) {
+						// change feature's coordinates to lat, lon:
+						for ( var i = 1, il = layer.feature.geometry.coordinates[0].length; i < il; i++ ) {
+				        	var ring = layer.feature.geometry.coordinates[0][i];
+				          	var latLngs = L.latLng(layer.feature.geometry.coordinates[0][i][1],layer.feature.geometry.coordinates[0][i][0])
+							console.log(latLngs)
+				          	misbounds.push(latLngs);
+				          	//console.log(misbounds)
+          				}
+						
+					}
+
+				});
+				var bounds =L.polygon(misbounds).getBounds()
+				map.fitBounds(misbounds)
+				//console.log(misCoord);
+				//var bounds = misCoord.getBounds()
+				//console.log(bounds);
+
+				/*for(i=0; i<sigpac_peral_4326.features.length; i++) {
 
 					var miParcela =sigpac_peral_4326.features[i].properties.PARCELA
 					var miRecinto =sigpac_peral_4326.features[i].properties.RECINTO
@@ -97,7 +124,7 @@
 					}
 				}
 				console.log(coord[0],coord[1]);
-				map.setView(new L.LatLng(coord[1], coord[0]), 16);
+				map.setView(new L.LatLng(coord[1], coord[0]), 16);*/
 
 			};
 			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 13);
