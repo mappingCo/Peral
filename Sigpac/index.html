@@ -105,8 +105,17 @@
 					}
 
 				});
-				var bounds =L.polygon(misbounds).getBounds()
-				map.fitBounds(misbounds)
+				if (misbounds.length==0){
+					console.log(misbounds)
+
+					alert('Sorry, this parcel does not exist')
+				}
+				else {
+					console.log(misbounds)
+					var bounds =L.polygon(misbounds).getBounds()
+					map.fitBounds(misbounds)
+				}
+
 
 
 			};
