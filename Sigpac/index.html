@@ -85,7 +85,7 @@
 				parcela= +parcela;
 				var recinto = $('#recinto').val() || 1;
 				recinto = +recinto;
-				console.log('searching: '+parcela, recinto)
+				console.log('searching parcela: '+parcela+', recinto: '+ recinto)
 				
 
 				var misbounds=[];
@@ -97,7 +97,7 @@
 					if (miParcela == parcela && miRecinto ==recinto) {
 						// change feature's coordinates to lat, lon:
 						for ( var i = 1, il = layer.feature.geometry.coordinates[0].length; i < il; i++ ) {
-				        	var ring = layer.feature.geometry.coordinates[0][i];
+				        	//var ring = layer.feature.geometry.coordinates[0][i];
 				          	var latLngs = L.latLng(layer.feature.geometry.coordinates[0][i][1],layer.feature.geometry.coordinates[0][i][0])
 				          	misbounds.push(latLngs);
           				}
