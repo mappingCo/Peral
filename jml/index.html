@@ -75,9 +75,14 @@
 		<script>
 			function selectNDVI(){
 				var ndvi_date= $( "#myNDVI option:selected" ).val();
+				ndvi_date= ndvi_date+'__4326'
 				console.log(ndvi_date)
-				map.removeLayer(NDVI_20140609);
-				console.log('borrar')
+				map.removeLayer(NDVI);
+
+				NDVI=L.geoJson(ndvi_date,{
+					style: styleNDVI,
+					onEachFeature:onEachFeatureNDVI
+				}).addTo(map)
 
 			}
 			var map = new L.Map('map',{crs: L.CRS.EPSG4326}).setView([42.07633450511675, -4.077880382537842], 13);
@@ -97,7 +102,7 @@
 		      attribution: "PNOA WMS © Instituto Tecnológico Agrario de Castilla y León"
 		    });
 			
-			var NDVI_20140609, parcelas;
+			var NDVI, parcelas;
 			
 
 			map.addLayer(pnoaCyL);
@@ -149,7 +154,7 @@
 				//onEachFeature:onEachFeature
 			}).addTo(map)
 
-			NDVI_20140609=L.geoJson(NDVI_20140609_4326,{
+			NDVI=L.geoJson(NDVI_20140609_4326,{
 				style: styleNDVI,
 				onEachFeature:onEachFeatureNDVI
 			}).addTo(map)
@@ -158,7 +163,7 @@
 			
 			map.addControl(new L.Control.Layers( 
 				{/*'OSM':basemap, 'Google':ggl, 'Google Terrain':ggl2, */'PNOA': pnoaCyL}, 
-				{'Parcelas':parcelas_4326,'20140609':NDVI_20140609}
+				{'Parcelas':parcelas_4326,'NDVI':NDVI}
 			));
 
 			function zoomToFeature(e) {
@@ -207,7 +212,7 @@
 			};
 
 			function resetHighlight(e) {
-			    NDVI_20140609.resetStyle(e.target);
+			    NDVI.resetStyle(e.target);
 			    info.update();
 			}
 			// custom infowindow not pop up
