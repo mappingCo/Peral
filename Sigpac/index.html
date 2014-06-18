@@ -107,12 +107,9 @@
 					alert('Sorry, this parcel does not exist')
 				}
 				else {
-					console.log(misbounds)
 					var bounds =L.polygon(misbounds).getBounds()
 					map.fitBounds(misbounds)
 				}
-
-
 
 			};
 			var map = new L.Map('map').setView([42.07633450511675, -4.077880382537842], 13);
