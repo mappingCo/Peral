@@ -99,9 +99,7 @@
 						for ( var i = 1, il = layer.feature.geometry.coordinates[0].length; i < il; i++ ) {
 				        	var ring = layer.feature.geometry.coordinates[0][i];
 				          	var latLngs = L.latLng(layer.feature.geometry.coordinates[0][i][1],layer.feature.geometry.coordinates[0][i][0])
-							console.log(latLngs)
 				          	misbounds.push(latLngs);
-				          	//console.log(misbounds)
           				}
 						
 					}
