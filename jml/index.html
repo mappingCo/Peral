@@ -88,18 +88,14 @@
 		
 					default: NDVI_file = 'NDVI_20140609_4326';
 				}
-				console.log(NDVI_file);
-				console.log(map.hasLayer(NDVI));
 				if (map.hasLayer(NDVI)) {
 					map.removeLayer(NDVI);
-					console.log('deleted')
 				}
 				
 				NDVI=L.geoJson(NDVI_file,{
 					style: styleNDVI,
 					onEachFeature:onEachFeatureNDVI
 				}).addTo(map)
-				console.log('added: ' +NDVI_file)
 			}
 			var map = new L.Map('map',{crs: L.CRS.EPSG4326}).setView([42.07633450511675, -4.077880382537842], 13);
 			/*var basemap = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
