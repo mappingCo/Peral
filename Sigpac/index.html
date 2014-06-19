@@ -99,8 +99,7 @@
 						for ( var i = 1, il = layer.feature.geometry.coordinates[0].length; i < il; i++ ) {
 				          	var latLngs = L.latLng(layer.feature.geometry.coordinates[0][i][1],layer.feature.geometry.coordinates[0][i][0])
 				          	misbounds.push(latLngs);
-          				}
-						
+          				};
 					}
 
 				});
@@ -108,8 +107,16 @@
 					alert('Sorry, this parcel does not exist')
 				}
 				else {
-					var bounds =L.polygon(misbounds).getBounds()
-					map.fitBounds(misbounds)
+	
+					var selectParcel=L.polygon(misbounds)
+					selectParcel.setStyle({
+				        weight: 6,
+				        color: 'red',
+				        fill: false
+				    });
+					selectParcel.addTo(map);
+					var bounds =L.polygon(misbounds).getBounds();
+					map.fitBounds(misbounds);
 				}
 
 			};
