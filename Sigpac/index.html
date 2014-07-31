@@ -56,6 +56,9 @@
 			    margin: 0 0 5px;
 			    color: #777;
 			}
+			.texto{
+				width: 190px;
+			}
 			.parcelaSelector {
 				position: absolute;
 				top: 170px;
@@ -241,7 +244,7 @@
 			var info = L.control();
 
 			info.onAdd = function (map) {
-			    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+			    this._div = L.DomUtil.create('div', 'info texto'); // create a div with a class "info" & texto
 			    this.update();
 			    return this._div;
 			};
