@@ -4,46 +4,46 @@ Peral
 
 * terrain model with 3d buildings
 
-http://mappingco.github.io/Peral/terrain_model/peral.html
+http://sigon426.github.io/Peral/terrain_model/peral.html
 
-![terrain](http://mappingco.github.io/Peral/terrain_model/terrain.png)
+![terrain](http://sigon426.github.io/Peral/terrain_model/terrain.png)
 
 
 * terrain model with 'parcelas'
 
-http://mappingco.github.io/Peral/terrain_model/peral_parcelas.html
+http://sigon426.github.io/Peral/terrain_model/peral_parcelas.html
 
-![parcelas](http://mappingco.github.io/Peral/terrain_model/parcelas.png)
+![parcelas](http://sigon426.github.io/Peral/terrain_model/parcelas.png)
 
 * Parcelas SIGPAC
 
-http://mappingco.github.io/Peral/Sigpac/
+http://sigon426.github.io/Peral/Sigpac/
 
-![parcelas](http://mappingco.github.io/Peral/Sigpac/sigpac.png)
+![parcelas](http://sigon426.github.io/Peral/Sigpac/sigpac.png)
 
 * osmbuildings in 3D:
 
-http://mappingco.github.io/Peral/OSMbuildings/v1/
+http://sigon426.github.io/Peral/OSMbuildings/v1/
 
-![osmbuildings1](http://mappingco.github.io/Peral/OSMbuildings/v1/osmbuildings1.png)
+![osmbuildings1](http://sigon426.github.io/Peral/OSMbuildings/v1/osmbuildings1.png)
 
 * buildings of interest in 3D:
 
-http://mappingco.github.io/Peral/OSMbuildings/v2/
+http://sigon426.github.io/Peral/OSMbuildings/v2/
 
-![osmbuildings2](http://mappingco.github.io/Peral/OSMbuildings/v2/osmbuildings2.png)
+![osmbuildings2](http://sigon426.github.io/Peral/OSMbuildings/v2/osmbuildings2.png)
 
 * Personalized osmbuildings :
 
-http://mappingco.github.io/Peral/OSMbuildings/v3/
+http://sigon426.github.io/Peral/OSMbuildings/v3/
 
-![osmbuildings3](http://mappingco.github.io/Peral/OSMbuildings/v3/osmbuildings3.png)
+![osmbuildings3](http://sigon426.github.io/Peral/OSMbuildings/v3/osmbuildings3.png)
 
 * OSMbuildings with actual date/time for shadow projection:
 
-http://mappingco.github.io/Peral/OSMbuildings/v4/
+http://sigon426.github.io/Peral/OSMbuildings/v4/
 
-![osmbuildingsv4](http://mappingco.github.io/Peral/OSMbuildings/v4/osmbuildings4.png)
+![osmbuildingsv4](http://sigon426.github.io/Peral/OSMbuildings/v4/osmbuildings4.png)
 
 
 
@@ -59,6 +59,6 @@ this library uses 3D osm tags: http://wiki.openstreetmap.org/wiki/Simple_3D_Buil
 
 * Swiping between two layers to compare 1956/now orthophotos
 
-http://mappingco.github.io/Peral/historico/swipelayers.html
+http://sigon426.github.io/Peral/historico/swipelayers.html
 
-![swipe](http://mappingco.github.io/Peral/historico/swipe.png)
+![swipe](http://sigon426.github.io/Peral/historico/swipe.png)
